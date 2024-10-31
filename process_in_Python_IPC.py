@@ -3,6 +3,7 @@ import multiprocessing
 import time
 
 
+
 def print_numbers(n, queue):
     total_sum = 0
     for i in range(n + 1):
