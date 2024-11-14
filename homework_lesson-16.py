@@ -5,7 +5,7 @@ import requests
 
 
 def downloader(thread_id,text,url):
-    sleep_seconds = random.randint(0, 10)
+    sleep_seconds = random.randint(0, 15)
     time.sleep(sleep_seconds)
     print("Thread " + str(thread_id) + ": " + text + " slept " + str(sleep_seconds) + " seconds" )
     requests.get(url).json()
