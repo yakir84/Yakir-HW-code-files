@@ -5,10 +5,12 @@ import requests
 
 
 def downloader(thread_id,text,url,returns):
-    sleep_seconds = random.randint(0, 15)
-    time.sleep(sleep_seconds)
-    print("Thread " + str(thread_id) + ": " + text + " slept " + str(sleep_seconds) + " seconds" )
-    requests.get(url).json()
+    start_download_time = time.time()
+    response = requests.get(url)
+    end_download_time = time.time()
+    download_duration = end_download_time - start_download_time
+    download_size = len(response.content)
+    print("Thread " + str(thread_id) + ": Download time: " + str(round(download_duration, 2)) + " seconds, Size: " + str(download_size) + " bytes")
     returns.append(thread_id)
 
 def main():
@@ -35,4 +37,4 @@ if __name__ == "__main__":
     start = time.time()
     main()
     end = time.time()
-    print(end - start)
+    print("Total execution time: " + str(round(end - start, 2)) + " seconds")
