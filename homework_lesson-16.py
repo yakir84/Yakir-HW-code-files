@@ -4,13 +4,12 @@ import random
 import requests
 
 
-def downloader(thread_id,text,url,returns):
+def downloader(thread_id,url,returns):
     start_download_time = time.time()
-    response = requests.get(url)
+    requests.get(url).json()
     end_download_time = time.time()
     download_duration = end_download_time - start_download_time
-    download_size = len(response.content)
-    print("Thread " + str(thread_id) + ": Download time: " + str(round(download_duration, 2)) + " seconds, Size: " + str(download_size) + " bytes")
+    print("Thread " + str(thread_id) + ": Download time: " + str(round(download_duration, 2)) + " seconds ")
     returns.append(thread_id)
 
 def main():
@@ -25,7 +24,7 @@ def main():
     threads = []
     threads_returns = []
     for i, url in enumerate(urls):
-        thread = threading.Thread(target=downloader, args=(i, "I", url, threads_returns, ))
+        thread = threading.Thread(target=downloader, args=(i, url, threads_returns, ))
         thread.start()
         threads.append(thread)
 
