@@ -9,7 +9,7 @@ def downloader(thread_id,url,returns):
     requests.get(url).json()
     end_download_time = time.time()
     download_duration = end_download_time - start_download_time
-    print("Thread " + str(thread_id) + ": Download time: " + str(round(download_duration, 2)) + " seconds ")
+    print("Thread " + str(thread_id) + ": Download time: " + str(round(download_duration, 2)) + " seconds  ")
     returns.append(thread_id)
 
 def main():
